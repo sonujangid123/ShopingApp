@@ -34,6 +34,7 @@ function App() {
 
   return (
     <>
+
       <div className="main-div">
         <div className="div1">
           <h1>We are changing the way people shop</h1>
