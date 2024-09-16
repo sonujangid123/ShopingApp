@@ -2,6 +2,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import "./style.css";
+import ProductsFirst from "./Component/ProductsFirst";
 
 function App() {
   const [featuredProducts, setFeaturedProducts] = useState([]);
@@ -70,7 +71,7 @@ function App() {
       </div> */}
 
 
-      <div className="products">
+      {/* <div className="products">
         {featuredProducts.map(product => (
           <div key={product.id} className="product">
             <div className="product-photo">
@@ -78,12 +79,41 @@ function App() {
             </div>
             <div className="content">
               <h3>{product.attributes.title}</h3>
-              {/* Divide price by 100 and format it */}
+           
               <p>${(product.attributes.price / 100).toFixed(2)}</p>
+              <a href="">Add To Cart</a>
             </div>
           </div>
         ))}
+      </div> */}
+
+
+
+      <div className="products">
+        {featuredProducts ? <ProductsFirst  ProductsFirst={featuredProducts} /> : "" }
+        
+        {/* {
+          featuredProducts ? featuredProducts.map((product) => {
+            return (
+              <div key={product.id} className="product">
+                <div className="product-photo">
+                  <img src={product.attributes.image} alt={product.attributes.title} />
+                </div>
+                <div className="content">
+                  <h3>{product.attributes.title}</h3>
+
+                  <p>${(product.attributes.price / 100).toFixed(2)}</p>
+                  <a href="">Add To Cart</a>
+                </div>
+              </div>
+            )
+          }) : ""
+
+        } */}
       </div>
+
+
+
 
 
 

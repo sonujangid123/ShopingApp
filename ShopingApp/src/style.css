@@ -125,6 +125,26 @@ form button:hover {
 }
 
 
+.navbar{
+  background-color: black;
+  text-align: end;
+  color: white;
+  padding: 15px 0px;
+
+}
+.navbar a{
+  color: white;
+  text-decoration: none;
+  padding: 0px 34px;
+  
+}
+
+.create{
+
+  margin-right: 5rem;
+}
+
+
 
 
 
