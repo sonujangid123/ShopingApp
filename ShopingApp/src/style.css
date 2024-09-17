@@ -151,6 +151,106 @@ form button:hover {
 
 
 
+/* ProductDetail CSS */
+.productDetail {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  background-color: #f9f9f9; /* Light background color for the container */
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Adding a slight shadow for depth */
+}
+
+.detailLeft {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff; /* White background for the image container */
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.detailLeft img {
+  max-width: 100%; /* Ensuring the image fits the container */
+  height: auto;
+  border-radius: 8px;
+}
+
+.detailRight {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.detailRight h1 {
+  font-size: 28px;
+  color: #333; /* Darker font color */
+  margin-bottom: 10px;
+}
+
+.detailRight h3 {
+  font-size: 18px;
+  color: #777; /* Slightly lighter color for secondary text */
+  margin-bottom: 15px;
+}
+
+.detailRight p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.detailRight .price {
+  font-size: 20px;
+  font-weight: bold;
+  color: #e63946; /* Highlight price in a strong color */
+  margin-bottom: 20px;
+}
+
+.detailRight button {
+  padding: 10px 20px;
+  background-color: #2a9d8f; /* Teal button color */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.detailRight button:hover {
+  background-color: #21867a; /* Darker teal on hover */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -396,3 +496,23 @@ header ul a {
 .cart .total {
   width: 40%;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -6,17 +6,109 @@ import App from "./App"
 import Header from "./Component/Header"
 import Products from "./Component/Products"
 import { createContext, useState } from "react"
+// import About from "./pages/About"
+import ProductDetail from "./Component/ProductDetail"
 
 
-export const ecomContext = createContext(null);
+
+
+export const ecomContext = createContext(null)
 
 function Home() {
   const [cart, setCart] = useState([]);
 
   function handleAddToCart(productToAdd) {
-    setCart([...cart, productToAdd]);
+    const productAddingToCart = {...productToAdd , quantity: 1};
+    setCart([...cart, productAddingToCart])
+
   }
+  console.log(cart);
+
+  function isProductInCart(product){
+    const productFound =  cart.find((cartItem)=>{
+       return cartItem.id === product.id ; 
+    });
+     return productFound;
+  }
+
+  function handleRemoveFromCart(productID){
+    setCart(
+       cart.filter((cartItem)=>{
+          return cartItem.id !==  productID;
+       })
+    );
+  }
+
+
+  function getProductQuantity(productID){
+    // const productFound = cart.find((cartItem)=>{
+    //   return cartItem.id === productID;
+    // });
+    // return productFound.quantity;
+
+     return cart.find((cartItem)=> cartItem.id === productID).quantity;
+
+   }
+
+  function  increment(productID){ 
+    setCart(
+      cart.map((cartItem)=>
+        cartItem.id === productID 
+        ? {...cartItem, quantity : cartItem.quantity + 1} : cartItem
+  
+       )
+    )
+   
+    
+
+
+  }
+
+  function decrement(productID){
+    setCart(
+      cart.map((cartItem)=>
+        cartItem.id === productID 
+        ? {...cartItem, quantity : cartItem.quantity - 1} : cartItem
+  
+       )
+
+    )
+   
+
+
+  }
+
+
+// export const ecomContext = createContext(null);
+
+// function Home() {
+//   const [cart, setCart] = useState([]);
+
+//   function handleAddToCart(productToAdd) {
+//     const productAddingToCart = {...productAddingToCart, quantity: 1 }
+//     setCart([...cart, productToAdd]);
+//   }
   // console.log(cart);
+
+  // function isProductInCart(product){
+  //       const productFound =  cart.find((cartItem) =>{
+  //        return cartItem.id === product.id;
+
+  //      });
+  //      return productFound
+
+  // }
+
+
+  // function handleRemoveFromCart(productToRemove){
+  //    setCart(cart.filter((cartItem) =>{
+  //     return cartItem.id !== productToRemove.id;
+  //    }));
+  // }
+
+
+
+
 
 
 
@@ -24,12 +116,17 @@ function Home() {
 
   return (
     <BrowserRouter>
-      <ecomContext.Provider value={{cart, setCart, handleAddToCart}}>
+      <ecomContext.Provider value={{cart, setCart , handleAddToCart , isProductInCart , handleRemoveFromCart ,  increment, decrement , getProductQuantity }}>
         <Header />
         <Routes>
           <Route path="/" element={<App />}></Route>
           <Route path="/products" element={<Products />}></Route>
           <Route path="/cart" element={<Cart />}></Route>
+          {/* <Route path="/about" element={<About />}></Route> */}
+          <Route path="/product-details/:id" element={<ProductDetail />} />
+
+          
+
 
         </Routes>
       </ecomContext.Provider>

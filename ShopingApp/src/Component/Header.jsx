@@ -19,6 +19,7 @@ function Header() {
                <li><Link to="/">Home</Link></li>
                <li><Link to="/products">Products</Link></li>
                <li><Link to="/cart">Cart</Link></li>
+               {/* <li><Link to="/about">about</Link></li> */}
                <li><Link to="" ><IoMdCart /><span>{cart.length}</span></Link></li>
             </ul>
 
