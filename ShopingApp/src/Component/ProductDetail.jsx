@@ -34,7 +34,8 @@ function ProductDetail() {
       <div className="detailRight">
         <h1>{product.attributes.title}</h1>
         <h3>{product.attributes.company}</h3>
-        <p>Price: {product.attributes.price}</p>
+        {/* <p>Price: {product.attributes.price}</p> */}
+        <p>${(product.attributes.price / 100).toFixed(2)}</p>
         <p>Description: {product.attributes.description}</p>
         <button onClick={() => handleAddToCart(product)}>Add To Cart</button>
       </div>

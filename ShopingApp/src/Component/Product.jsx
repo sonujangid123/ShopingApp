@@ -42,9 +42,11 @@
 
 // export default Product
 
-import React, { useContext, useState } from 'react'
+
+
+// import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { ecomContext } from '../Home'
+// import { ecomContext } from '../Home'
 // import CartQty from './CartQty '
 import ProductDetail from './ProductDetail'
 

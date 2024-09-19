@@ -1,5 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import ProductDetail from './ProductDetail'
+import { Link } from 'react-router-dom'
+
 
 function Products() {
   const [products, setProducts] = useState(null);
@@ -49,18 +52,24 @@ function Products() {
         <div className="products2">
           {products
             ? products.map((product) => {
-                return (
-                  <div key={product.id} className="product2">
-                    <div className="product-photo2">
+              return (
+                <div key={product.id} className="product2">
+                  <Link to={`/product-details/${product.id}`} element={<ProductDetail />}>
+                    <div className="product-photo">
                       <img src={product.attributes.image} alt={product.attributes.title} />
                     </div>
-                    <div className="content2">
-                      <h3>{product.attributes.title}</h3>
-                      <p>${(product.attributes.price / 100).toFixed(2)}</p>
-                    </div>
+                  </Link>
+
+                  {/* <div className="product-photo2">
+                      <img src={product.attributes.image} alt={product.attributes.title} />
+                    </div> */}
+                  <div className="content2">
+                    <h3>{product.attributes.title}</h3>
+                    <p>${(product.attributes.price / 100).toFixed(2)}</p>
                   </div>
-                );
-              })
+                </div>
+              );
+            })
             : ""}
         </div>
       </div>

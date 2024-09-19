@@ -17,77 +17,101 @@ export const ecomContext = createContext(null)
 function Home() {
   const [cart, setCart] = useState([]);
 
-  function handleAddToCart(productToAdd) {
-    const productAddingToCart = {...productToAdd , quantity: 1};
-    setCart([...cart, productAddingToCart])
+  // function handleAddToCart(productToAdd) {
+  //   const productAddingToCart = { ...productToAdd, quantity: 1 };
+  //   setCart([...cart, productAddingToCart])
 
+  // }
+  function handleAddToCart(productToAdd) {
+    const existingProduct = cart.find((cartItem) => cartItem.id === productToAdd.id);
+  
+    if (existingProduct) {
+      // Product already in cart, update its quantity
+      setCart(
+        cart.map((cartItem) =>
+          cartItem.id === productToAdd.id
+            ? { ...cartItem, quantity: cartItem.quantity + 1 }
+            : cartItem
+        )
+      );
+    } else {
+      // Product not in cart, add it with quantity 1
+      const productAddingToCart = { ...productToAdd, quantity: 1 };
+      setCart([...cart, productAddingToCart]);
+    }
   }
+  
   console.log(cart);
 
-  function isProductInCart(product){
-    const productFound =  cart.find((cartItem)=>{
-       return cartItem.id === product.id ; 
+  function isProductInCart(product) {
+    const productFound = cart.find((cartItem) => {
+      return cartItem.id === product.id;
     });
-     return productFound;
+    return productFound;
   }
 
-  function handleRemoveFromCart(productID){
+  function handleRemoveFromCart(productID) {
     setCart(
-       cart.filter((cartItem)=>{
-          return cartItem.id !==  productID;
-       })
+      cart.filter((cartItem) => {
+        return cartItem.id !== productID;
+      })
     );
   }
 
 
-  function getProductQuantity(productID){
+  function getProductQuantity(productID) {
     // const productFound = cart.find((cartItem)=>{
     //   return cartItem.id === productID;
     // });
     // return productFound.quantity;
 
-     return cart.find((cartItem)=> cartItem.id === productID).quantity;
+    return cart.find((cartItem) => cartItem.id === productID).quantity;
 
-   }
+  }
 
-  function  increment(productID){ 
+  function increment(productID) {
     setCart(
-      cart.map((cartItem)=>
-        cartItem.id === productID 
-        ? {...cartItem, quantity : cartItem.quantity + 1} : cartItem
-  
-       )
+      cart.map((cartItem) =>
+        cartItem.id === productID
+          ? { ...cartItem, quantity: cartItem.quantity + 1 } : cartItem
+
+      )
     )
-   
-    
+
+
 
 
   }
 
-  function decrement(productID){
+  // function decrement(productID) {
+  //   setCart(
+  //     cart.map((cartItem) =>
+  //       cartItem.id === productID
+  //         ? { ...cartItem, quantity: cartItem.quantity - 1 } : cartItem
+  //     )
+  //   )
+  // }
+
+  function decrement(productID) {
     setCart(
-      cart.map((cartItem)=>
-        cartItem.id === productID 
-        ? {...cartItem, quantity : cartItem.quantity - 1} : cartItem
-  
-       )
-
-    )
-   
-
-
+      cart.map((cartItem) =>
+        cartItem.id === productID && cartItem.quantity > 1
+          ? { ...cartItem, quantity: cartItem.quantity - 1 }
+          : cartItem
+      )
+    );
   }
+  
 
+  // export const ecomContext = createContext(null);
 
-// export const ecomContext = createContext(null);
+  // function Home() {
+  //   const [cart, setCart] = useState([]);
 
-// function Home() {
-//   const [cart, setCart] = useState([]);
-
-//   function handleAddToCart(productToAdd) {
-//     const productAddingToCart = {...productAddingToCart, quantity: 1 }
-//     setCart([...cart, productToAdd]);
-//   }
+  //   function handleAddToCart(productToAdd) {
+  //     const productAddingToCart = {...productAddingToCart, quantity: 1 }
+  //     setCart([...cart, productToAdd]);
+  //   }
   // console.log(cart);
 
   // function isProductInCart(product){
@@ -116,7 +140,7 @@ function Home() {
 
   return (
     <BrowserRouter>
-      <ecomContext.Provider value={{cart, setCart , handleAddToCart , isProductInCart , handleRemoveFromCart ,  increment, decrement , getProductQuantity }}>
+      <ecomContext.Provider value={{ cart, setCart, handleAddToCart, isProductInCart, handleRemoveFromCart, increment, decrement, getProductQuantity }}>
         <Header />
         <Routes>
           <Route path="/" element={<App />}></Route>
@@ -125,7 +149,7 @@ function Home() {
           {/* <Route path="/about" element={<About />}></Route> */}
           <Route path="/product-details/:id" element={<ProductDetail />} />
 
-          
+
 
 
         </Routes>
