@@ -12,7 +12,7 @@ function Header() {
       <>
          <div className="navbar">
             <Link   to="/Login">Login / Guest</Link>
-            <Link  to="/register">Create Account</Link>
+            <Link  to="/CreateAccount">Create Account</Link>
          </div>
          <header>
             <h2 className="title-heading"><Link to="">Shopping App</Link></h2>

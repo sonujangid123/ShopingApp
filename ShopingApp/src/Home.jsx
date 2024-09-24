@@ -9,7 +9,9 @@ import { createContext, useState } from "react"
 // import About from "./pages/About"
 import ProductDetail from "./Component/ProductDetail"
 import Login from "./pages/Login"
+import CreateAccount from "./pages/CreateAccount "
 
+ 
 
 
 
@@ -147,6 +149,8 @@ function Home() {
         <Routes>
           <Route path="/" element={<App />}></Route>
           <Route path="/Login" element={<Login />}></Route>
+          <Route path="/CreateAccount " element={<CreateAccount />}></Route>
+
           
           <Route path="/products" element={<Products />}></Route>
           <Route path="/cart" element={<Cart />}></Route>
