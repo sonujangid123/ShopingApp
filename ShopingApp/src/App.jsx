@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import "./style.css";
 import ProductsFirst from "./Component/ProductsFirst";
 
+
 function App() {
   const [featuredProducts, setFeaturedProducts] = useState([]);
   const [loading, setLoading] = useState(true);

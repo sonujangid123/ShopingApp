@@ -8,6 +8,8 @@ import Products from "./Component/Products"
 import { createContext, useState } from "react"
 // import About from "./pages/About"
 import ProductDetail from "./Component/ProductDetail"
+import Login from "./pages/Login"
+
 
 
 
@@ -144,6 +146,8 @@ function Home() {
         <Header />
         <Routes>
           <Route path="/" element={<App />}></Route>
+          <Route path="/Login" element={<Login />}></Route>
+          
           <Route path="/products" element={<Products />}></Route>
           <Route path="/cart" element={<Cart />}></Route>
           {/* <Route path="/about" element={<About />}></Route> */}

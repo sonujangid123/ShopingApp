@@ -5,13 +5,14 @@ import { IoMdCart } from "react-icons/io";
 import { Link } from "react-router-dom"
 import { ecomContext } from "../Home";
 
+
 function Header() {
      const{cart} =  useContext(ecomContext);
    return (
       <>
          <div className="navbar">
-            <a className="" href="/loggedin">Login / Guest</a>
-            <a className="create" href="/register">Create Account</a>
+            <Link   to="/Login">Login / Guest</Link>
+            <Link  to="/register">Create Account</Link>
          </div>
          <header>
             <h2 className="title-heading"><Link to="">Shopping App</Link></h2>
